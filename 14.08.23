@@ -1,0 +1,38 @@
+CREATE TABLE serie (
+  idserie serial NOT NULL,
+  produtora VARCHAR(50),
+  nome VARCHAR(30) NOT NULL,
+  genero VARCHAR(30),
+  PRIMARY KEY (idserie)
+  );
+  
+ CREATE TABLE temporada (
+    idtemporada serial NOT NULL,
+    ano INT NOT NULL,
+    numero INT, 
+    PRIMARY KEY(idtemporada)
+  );
+  
+ CREATE TABLE episodio (
+    idepisodio serial NOT NULL,
+    numero INT,
+    titulo VARCHAR(50) NOT NULL,
+    duracao INT,
+    PRIMARY KEY(idepisodio)
+  );
+  
+  CREATE TABLE artista(
+    idartista serial NOT NULL,
+    nome VARCHAR(30) NOT NULL,
+    datanasc DATE NOT NULL,
+    localnasc VARCHAR(30),
+    PRIMARY KEY (idartista)
+  );
+ 
+ CREATE TABLE amigo(
+   idamigo serial NOT NULL,
+   nome VARCHAR(30) NOT NULL,
+   whats INT NOT NULL,
+   insta VARCHAR(30),
+   PRIMARY KEY (idamigo)
+ );
