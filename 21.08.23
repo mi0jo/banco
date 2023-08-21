@@ -1,0 +1,69 @@
+CREATE TABLE serie (
+  idserie serial NOT NULL,
+  produtora VARCHAR(50),
+  nome VARCHAR(30) NOT NULL,
+  genero VARCHAR(30),
+  PRIMARY KEY (idserie)
+  );
+  
+ CREATE TABLE temporada (
+    idtemporada serial NOT NULL,
+    ano INT NOT NULL,
+    numero INT, 
+    idserie SERIAL NOT NULL, 
+    PRIMARY KEY(idtemporada)
+  );
+  
+ CREATE TABLE episodio (
+    idepisodio serial NOT NULL,
+    numero INT,
+    titulo VARCHAR(50) NOT NULL,
+    duracao INT,
+    idtemporada SERIAL not NULL,
+    PRIMARY KEY(idepisodio)
+  );
+  
+  CREATE TABLE artista(
+    idartista serial NOT NULL,
+    nome VARCHAR(30) NOT NULL,
+    datanasc DATE NOT NULL,
+    localnasc VARCHAR(30),
+    PRIMARY KEY (idartista)
+  );
+ 
+ CREATE TABLE amigo(
+   idamigo serial NOT NULL,
+   nome VARCHAR(30) NOT NULL,
+   whats INT NOT NULL,
+   insta VARCHAR(30),
+   PRIMARY KEY (idamigo)
+ );
+ 
+ CREATE table atuacao(
+   idatuacao SERIAL  NOT NULL,
+   idartista SERIAL not NULL, 
+   idtemporada SERIAL NOT NULL,
+   PRIMARY KEY (idatuacao)
+ );
+ 
+ CREATE TABLE assiste (
+   idassiste SERIAL not NULL,
+   idamigo SERIAL NOT NULL, 
+   idepisodio SERIAL NOT NULL,
+   PRIMARY KEY (idassiste)
+ );
+ 
+ 
+ alter table temporada
+ add FOREIGN key (idserie) REFERENCES serie (idserie);
+ 
+ add table episodio
+ add FOREIGN key (idtemporada) REFERENCES temporada(idtemporada);
+ 
+ alter table atuacao
+ add FOREIGN key (idartista) REFERENCES artista(idartista),
+ add foreign key (idtemporada) REFERENCES temporada(idtemporada);
+ 
+ alter table assiste
+ add FOREIGN key (idamigo) REFERENCES amigo(idamigo),
+ add FOREIGN key (idepisodio) REFERENCES episodio(idepisodio);
